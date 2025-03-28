@@ -1,6 +1,7 @@
 import numpy
 import pandas
-import pickle, sklearn
+import pickle 
+import sklearn
 from flask import Flask, render_template, request
 
 
@@ -30,10 +31,6 @@ def submit_form():
                   
         age = int(request.form.get("age", 0))
         
-
-        #diabetes = int(request.form.get("diabetes", 0))
-        #print(diabetes, flush=True)
-
 
         diabetes = request.form.get("diabetes")
         if diabetes == "Yes":
@@ -97,8 +94,9 @@ def submit_form():
         result = model.predict([input_data])
         print(result, flush=True)
 
-        return {"Predicted Insurance Price": round(result[0],0)}
-
+        '''
+        #return {"Predicted Insurance Price": round(result[0],0)}
+        '''
 
         cont = {
             "age": age,
@@ -116,7 +114,8 @@ def submit_form():
 
         }   
 
-        return render_template("results.html", **cont) 
+        print("Rendering result.html..", flush=True)
+        return render_template("result.html", **cont) 
         
                      
 

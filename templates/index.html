@@ -1,45 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<body style="background-color: rgb(203, 155, 155);">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Prediction Form</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<h2>Insurance Details</h2><br>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        .info-text {
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+        }
+    </style>
+</head>
 
-<form action = "/submit" method = "POST">
-    <label for="age">Age:</label><br>
-    <input type="number" id="age" name="age" value=18 min=18><br><br>
+<body>
+    <div class="container">
+        <h2>Insurance Details</h2>
 
-    <label for="diabetes">Diabetes:</label><br>
-    <input type="text" id="diabetes" name="diabetes" value="No"><br><br>
+        <form action="/submit" method="POST">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" class="form-control" id="age" name="age" value="18" min="18">
+                </div>
 
-    <label for="bp">BloodPressureProblems:</label><br>
-    <input type="text" id="bp" name="bp" value="No"><br><br>
+                <div class="col-md-6">
+                    <label for="height" class="form-label">Height (cm):</label>
+                    <input type="number" class="form-control" id="height" name="height" value="150" min="0">
+                </div>
 
-    <label for="transplants">AnyTransplants:</label><br>
-    <input type="text" id="transplants" name="transplants" value="No"><br><br>
+                <div class="col-md-6">
+                    <label for="weight" class="form-label">Weight (kg):</label>
+                    <input type="number" class="form-control" id="weight" name="weight" value="50" min="0">
+                </div>
 
-    <label for="disease">AnyChronicDiseases:</label><br>
-    <input type="text" id="disease" name="disease" value="No"><br><br>
+                <div class="col-md-6">
+                    <label for="surgery" class="form-label">Major Surgeries:</label>
+                    <input type="number" class="form-control" id="surgery" name="surgery" value="0" min="0">
+                </div>
 
-    <label for="height">Height:</label><br>
-    <input type="number" id="height" name="height" value=150 min=0><br><br>
+                <div class="col-md-6">
+                    <label for="diabetes" class="form-label">Diabetes:</label>
+                    <select class="form-control" id="diabetes" name="diabetes">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
 
-    <label for="weight">Weight:</label><br>
-    <input type="number" id="weight" name="weight" value=50 min=0><br><br>
+                <div class="col-md-6">
+                    <label for="bp" class="form-label">Blood Pressure:</label>
+                    <select class="form-control" id="bp" name="bp">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
 
-    <label for="allergy">KnownAllergies:</label><br>
-    <input type="text" id="allergy" name="allergy" value="No"><br><br>
+                <div class="col-md-6">
+                    <label for="transplants" class="form-label">Transplants:</label>
+                    <select class="form-control" id="transplants" name="transplants">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
 
-    <label for="cancer">HistoryOfCancerInFamily:</label><br>
-    <input type="text" id="cancer" name="cancer" value="No"><br><br>
+                <div class="col-md-6">
+                    <label for="disease" class="form-label">Chronic Diseases:</label>
+                    <select class="form-control" id="disease" name="disease">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
 
-    <label for="surgery">NumberOfMajorSurgeries:</label><br>
-    <input type="number" id="surgery" name="surgery" value=0 min=0><br><br>
+                <div class="col-md-6">
+                    <label for="allergy" class="form-label">Allergies:</label>
+                    <select class="form-control" id="allergy" name="allergy">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
 
-    <input type="submit" value="Submit">
+                <div class="col-md-6">
+                    <label for="cancer" class="form-label">Cancer History:</label>
+                    <select class="form-control" id="cancer" name="cancer">
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+            </div>
 
-</form>
+            <button type="submit" class="btn-submit mt-4">Submit</button>
+        </form>
 
-<p> If you click the submit button, the form data will be sent to a page called "/submit".</p>
+        <p class="info-text">Your insurance details will be processed upon submission.</p>
+    </div>
 
+    <!-- Bootstrap JS (optional, only if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
